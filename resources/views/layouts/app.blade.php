@@ -19,11 +19,10 @@
     <meta name="author" content="" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="{{ asset('style/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('style/css/new.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-
 </head>
-
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed body">
     <nav class="sb-topnav navbar navbar-expand text-black bg-primary">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-black" href="{{route('home')}}">ESI STUDENTS</a>
@@ -41,7 +40,7 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <a class="nav-link collapse navbar-collapse" id="navbarDropdown" href="#" role="button"
-                data-bs-toggle="dropdown" <div class="" id="navbarSupportedContent">
+                data-bs-toggle="dropdown" ><div class="" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
 
                 <!-- Right Side Of Navbar -->
@@ -109,6 +108,7 @@
                                 @can('secretaire')
                                 <a class="nav-link" href="{{ route('student') }}">Add student</a>
                                 @endcan
+                                <a class="nav-link" href="{{ route('card') }}">Student card</a>
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Pages</div>

@@ -37,7 +37,7 @@
                                     name="year" value="{{ old('email') }}" required autocomplete="" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control my-2 py-1" id="photo" type="text" placeholder="Enter your photo"
+                                <input class="form-control my-2 py-1" id="photo" type="file" placeholder="Enter your photo"
                                     name="photo" value="{{ old('email') }}" required autocomplete="" />
                             </div>
                             <div>

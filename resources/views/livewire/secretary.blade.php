@@ -9,32 +9,48 @@
                         <div class="card-header bg-primary">
                             <h3 class="text-center font-weight-light text-light my-1">Add user</h3>
                         </div>
-                        <form method="POST" action="">
+                        <form method="POST" action="{{ route('register') }}">
                             @csrf
-                            {{-- register secretary --}}
-                            {{-- name, email, password, confirm --}}
                             <div class="form-group">
-                                <input class="form-control my-2  py-1" id="name" type="text" placeholder="Enter name"
+                                <input class="form-control my-2  py-1 @error('name') is-invalid @enderror" id="name" type="text" placeholder="Enter name"
                                     name="name" value="{{ old('name') }}" required autocomplete="name" autofocus />
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control my-2  py-1" id="email" type="email" placeholder="Enter email"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email" />
+                                <input class="form-control my-2  py-1 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email"/>
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 <input class="form-control my-2  py-1" id="password" type="password"
                                     placeholder="Enter password" name="password" required autocomplete="new-password" />
-                            </div>
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                </div>
                             <div class="form-group">
                                 <input class="form-control my-2  py-1" id="password-confirm" type="password"
                                     placeholder="Confirm password" name="password_confirmation" required
-                                    autocomplete="new-password" />
+                                    autocomplete="new-password"  @error('password') is-invalid @enderror name="password" required autocomplete="new-password"/>
                             </div>
                             <div>
-                                <button class="btn btn-primary btn-block my-2" type="submit">Register</button>
-                                <a class="btn btn-danger btn-block my-2" href="{{ route('home') }}">
-                                    Return to home
-                                </a>
+                            </div>
+                            <div class="row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Register') }}
+                                    </button>
+                                <a href="{{ route('home') }}" class="btn btn-danger">{{ __('Return') }}</a>
+                                </div>
                             </div>
                         </form>
                     </div>

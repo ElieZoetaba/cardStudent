@@ -25,6 +25,7 @@ Route::get('/index', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 // Route::group(['prefix'=>'admin' ,'middleware' =>['isAdmin', 'auth']], function () {
 //     Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
 //     Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
@@ -32,7 +33,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 // Route::group(['prefix'=>'user' ,'middleware' =>['isUser', 'auth']], function () {
-//     // Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
-//     Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
-//     Route::get('/table', [\App\Http\Controllers\HomeController::class, 'table'])->name('table');
+    Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
+    Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
+    Route::get('/table', [\App\Http\Controllers\HomeController::class, 'table'])->name('table');
+    Route::get('/card', [App\Http\Controllers\HomeController::class, 'card'])->name('card');
 // });
