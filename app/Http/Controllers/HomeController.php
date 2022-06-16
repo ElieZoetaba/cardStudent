@@ -26,23 +26,5 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function secretary()
-    {
-        return view('livewire.secretary');
-    }
-
-    public function student()
-    {
-        return view('livewire.student');
-    }
-
-    public function table(){
-        return view('livewire.table');
-    }
-
-    public function indexx()
-    {
-        return view('layouts.index');
-    }
+   
 }

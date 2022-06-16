@@ -22,21 +22,17 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('layouts.index');
 });
-
-Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
-Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
-Route::get('/table', [\App\Http\Controllers\HomeController::class, 'table'])->name('table');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix'=>'admin' ,'middleware' =>['isAdmin', 'auth']], function () {
-    Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
-    Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
-    Route::get('/table', [\App\Http\Controllers\HomeController::class, 'table'])->name('table');
-});
+// Route::group(['prefix'=>'admin' ,'middleware' =>['isAdmin', 'auth']], function () {
+//     Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
+//     Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
+//     Route::get('/table', [\App\Http\Controllers\HomeController::class, 'table'])->name('table');
+// });
 
-Route::group(['prefix'=>'user' ,'middleware' =>['isUser', 'auth']], function () {
-    Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
-    Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
-    Route::get('/table', [\App\Http\Controllers\HomeController::class, 'table'])->name('table');
-});
+// Route::group(['prefix'=>'user' ,'middleware' =>['isUser', 'auth']], function () {
+//     // Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
+//     Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
+//     Route::get('/table', [\App\Http\Controllers\HomeController::class, 'table'])->name('table');
+// });

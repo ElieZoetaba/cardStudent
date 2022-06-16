@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <input class="form-control my-2  py-1" id="password-confirm" type="password"
                                 placeholder="Confirm password" name="password_confirmation" required
-                                autocomplete="new-password"  @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"/>
+                                autocomplete="new-password"  @error('password') is-invalid @enderror name="password" required autocomplete="new-password"/>
                         </div>
                         <div>
                         </div>
@@ -51,10 +51,6 @@
                                 </button>
                             <a href="{{ route('login') }}" class="btn btn-success">{{ __('Login') }}</a>
                             </div>
-                        </div>
-                        <div class="
-                        
-                        ">
                         </div>
                     </form>
                 </div>

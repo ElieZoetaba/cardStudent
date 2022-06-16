@@ -64,7 +64,7 @@
                         <a class="nav-link text-black collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#admin" aria-expanded="false" aria-controls="collapseLayouts">
                             {{ Auth::user()->name }}
-                        </a>  
+                        </a>
                         <div class="collapse" id="admin" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested bg-body nav">
@@ -103,10 +103,14 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
+                                @can('director')
                                 <a class="nav-link" href="{{ route('secretary') }}">Add user</a>
+                                @endcan
+                                @can('secretaire')
                                 <a class="nav-link" href="{{ route('student') }}">Add student</a>
+                                @endcan
                             </nav>
-                        </div>                 
+                        </div>
                         <div class="sb-sidenav-menu-heading">Pages</div>
                         <a class="nav-link" href="{{ route('table') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>

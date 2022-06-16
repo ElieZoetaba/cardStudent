@@ -20,7 +20,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'role',
         'password',
     ];
 
@@ -33,6 +32,15 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, "user_role", "user_id", "role_id");
+    }
+
+    public function hasRole($role){
+        return $this->roles()->where('name', $role)->first() !==null;
+    }
 
     /**
      * The attributes that should be cast.

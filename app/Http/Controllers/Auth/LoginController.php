@@ -28,14 +28,6 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-      protected function redirectTo(){
-        if(auth()->user()->role == '1'){
-            return '/home';
-        }
-        else if(auth()->user()->role == '2'){
-            return '/home';
-        }
-      }
 
     /**
      * Create a new controller instance.
@@ -47,23 +39,22 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
-        $input= $request->all();
-        $this->validate($request,[
-          'email'=>'required|email',
-          'password'=>'required'
-        ]);
+    // public function login(Request $request){
+    //     $input= $request->all();
+    //     $this->validate($request,[
+    //       'email'=>'required|email',
+    //       'password'=>'required'
+    //     ]);
 
-        if( auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password'])) ){
-            if(auth()->user()->role == 1){
-                return redirect()->route('home');
-            }
-            elseif(auth()->user()->role == 2){
-                return redirect()->route('home');
-            }
-
-        }else{
-            return redirect()->route('login')->with('error', 'Error and password are wrong');
-        }
-    }
+    //     if( auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password'])) ){
+    //         if(auth()->user()->role == 1){
+    //             return redirect()->route('home');
+    //         }
+    //         elseif(auth()->user()->role == 2){
+    //             return redirect()->route('home');
+    //         }
+    //     }else{
+    //         return redirect()->route('login')->with('error', 'Error and password are wrong');
+    //     }
+    // }
 }
