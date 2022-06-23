@@ -36,14 +36,14 @@
                                     <img src="{{ asset('img/student.png') }}" alt="student" class="img-fluid">
                                 </div>
                                 <div class="d-block offset-1 mt-3">
-                                    <h6 class="">Name</h6>
-                                    <h6>First name</h6>
-                                    <h6>Registration number</h6>
+                                    <h6 class="">{{ $show->name }}</h6>
+                                    <h6> {{ $show->first_name }}</h6>
+                                    <h6>{{ $show->registration_number }}</h6>
                                 </div>
                                 <div class="d-block offset-1 mt-3">
-                                    <h6>Cycle</h6>
-                                    <h6>Level</h6>
-                                    <h6>Year</h6>
+                                    <h6>{{ $show->cycle }}</h6>
+                                    <h6>{{ $show->level }}</h6>
+                                    <h6>{{ $show->year }}</h6>
                                 </div>
                             </div>
                         </div>

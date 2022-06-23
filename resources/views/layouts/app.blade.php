@@ -18,12 +18,12 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="{{ asset('style/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link href="{{ asset('style/css/new.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed body">
-    <nav class="sb-topnav navbar navbar-expand text-black bg-primary">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark text-black bg-primary">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-black" href="{{route('home')}}">ESI STUDENTS</a>
         <!-- Sidebar Toggle-->
@@ -40,12 +40,8 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <a class="nav-link collapse navbar-collapse" id="navbarDropdown" href="#" role="button"
-                data-bs-toggle="dropdown" ><div class="" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-
-                <!-- Right Side Of Navbar -->
-
-                <!-- Authentication Links -->
+                data-bs-toggle="dropdown" ><div class="" id="navbarSupportedContent"></div>
+                    <i class="fas fa-user-circle text-black"></i>
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
@@ -62,7 +58,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link text-black collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#admin" aria-expanded="false" aria-controls="collapseLayouts">
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->name }}    
                         </a>
                         <div class="collapse" id="admin" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
@@ -88,7 +84,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Corps</div>
-                        <a class="nav-link" href="{{route('home')}}">
+                        <a class="nav-link" href="{{ url('index')}}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Admin dashboard
                         </a>
@@ -103,16 +99,16 @@
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 @can('director')
-                                <a class="nav-link" href="{{ route('secretary') }}">Add user</a>
+                                <a class="nav-link" href="{{ url('secretary')}}">Add user</a>
                                 @endcan
-                                @can('secretaire')
-                                <a class="nav-link" href="{{ route('student') }}">Add student</a>
-                                @endcan
-                                <a class="nav-link" href="{{ route('card') }}">Student card</a>
+                                {{-- @can('secretaire') --}}
+                                <a class="nav-link" href="{{ url('student')}}">Add student</a>
+                                {{-- @endcan --}}
+                                <a class="nav-link" href="{{ url('card')}}">Student card</a>
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Pages</div>
-                        <a class="nav-link" href="{{ route('table') }}">
+                        <a class="nav-link" href="{{ url('table')}}">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Students list
                         </a>
@@ -128,21 +124,13 @@
             <main class="py-4">
                 @yield('content')
             </main>
-
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
-    <script src="{{ asset('style/js/scripts.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-    </script>
-
+    <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Styles -->
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('style/js/datatables-simple-demo.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 
 </body>

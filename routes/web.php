@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,21 +22,18 @@ Route::get('/', function () {
 });
 
 Route::get('/index', function () {
-    return view('layouts.index');
+    return view('home');
 });
+
+Route::group([], function () {
+    Route::get('students', function () {
+
+        $students = DB::table('posts')->get();
+        return view('livewire.table', compact('students'));
+    });
+});
+
+
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource("/store", App\Http\Controllers\StudentController::class);
 
-
-// Route::group(['prefix'=>'admin' ,'middleware' =>['isAdmin', 'auth']], function () {
-//     Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
-//     Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
-//     Route::get('/table', [\App\Http\Controllers\HomeController::class, 'table'])->name('table');
-// });
-
-// Route::group(['prefix'=>'user' ,'middleware' =>['isUser', 'auth']], function () {
-    Route::get('/secretary', [\App\Http\Controllers\HomeController::class, 'secretary'])->name('secretary');
-    Route::get('/student', [\App\Http\Controllers\HomeController::class, 'student'])->name('student');
-    Route::get('/table', [\App\Http\Controllers\HomeController::class, 'table'])->name('table');
-    Route::get('/card', [App\Http\Controllers\HomeController::class, 'card'])->name('card');
-// });

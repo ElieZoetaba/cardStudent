@@ -21,6 +21,7 @@ class StudentTable extends Migration
             $table->string('registration_number');
             $table->string('cycle');
             $table->string('level');
+            $table->string('year');
             $table->string('photo');
             $table->timestamps();
         });

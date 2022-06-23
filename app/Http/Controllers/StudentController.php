@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class StudentController extends Controller
 {
@@ -13,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::all();
+        return view('livewire.table')->with('students', $students);
     }
 
     /**
@@ -23,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('livewire.student');
     }
 
     /**
@@ -34,7 +37,9 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Student::create($input);
+        return redirect('livewire.student')->with('flash_message', 'post Added');
     }
 
     /**
@@ -45,7 +50,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $students = Student::find($id);
+        return view('livewire.card')->with('show', $students);
     }
 
     /**
@@ -56,7 +62,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $students = Student::find($id);
+        return view('livewire.student')->with('edit', $students);
     }
 
     /**
@@ -68,7 +75,10 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $students =Student::find($id);
+        $input = $request->all();
+        $students->update($input);
+        return redirect('create')->with('flash_massage', 'post Updated');
     }
 
     /**
@@ -79,6 +89,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::destroy($id);
+        return redirect('create')->with('flash_message', 'post deleted!');
     }
 }

@@ -25,12 +25,6 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
-            // if (Auth::guard($guard)->check() && Auth::user()->role == 1) {
-            //     return redirect()->route('home');
-            // }
-            // else if (Auth::guard($guard)->check() && Auth::user()->role == 2) {
-            //     return redirect()->route('home');
-            // }
         }
 
         return $next($request);

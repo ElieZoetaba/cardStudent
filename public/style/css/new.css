@@ -8,3 +8,10 @@
 .b3{
     background:#001653;
 }
+
+.card {
+    background: url("{{ asset('img/student.png')}}") !important;
+    background-repeat: no-repeat !important;
+  
+    background-position: center !important;
+  }
